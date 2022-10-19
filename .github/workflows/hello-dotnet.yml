@@ -17,3 +17,12 @@ jobs:
 
       - name: "Print .NET CLI version"
         run: dotnet --version
+
+      - name: "Restore Notes.Api.Test"
+        run: dotnet restore Notes.Api.Test/Notes.Api.Test.csproj
+      
+      - name: "Build Notes.Api.Test"
+        run: dotnet build --no-restore --configuration Release Notes.Api.Test/Notes.Api.Test.csproj
+
+      - name: "Run tests in Notes.Api.Test"
+        run: dotnet test --no-build --configuration Release --verbosity normal --logger trx Notes.Api.Test/Notes.Api.Test.csproj
