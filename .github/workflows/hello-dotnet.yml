@@ -29,3 +29,11 @@ jobs:
 
       - name: "Run tests in Notes.Api.Test"
         run: dotnet test --no-build --configuration Release --verbosity normal --logger trx $NOTES_API_TEST_PATH
+
+      - name: Test Reporter
+        uses: dorny/test-reporter@v1.6.0
+        if: success() || failure()
+        with:
+          name: TRX Test
+          path: Notes.Api.Test/TestResults/*.xml
+          reporter: dotnet-trx
