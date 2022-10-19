@@ -35,5 +35,5 @@ jobs:
         if: success() || failure()
         with:
           name: TRX Test
-          path: Notes.Api.Test/TestResults/*.xml
+          path: Notes.Api.Test/TestResults/*.trx
           reporter: dotnet-trx
